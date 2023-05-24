@@ -136,6 +136,25 @@ Django Prose can also handle uploading attachments with drag and drop. To set th
 - [x] Include the Django Prose URLs (example in [`example/example/urls.py`](https://github.com/withlogicco/django-prose/blob/9e24cc794eae6db48818dd15a483d106d6a99da0/example/example/urls.py#L13-L14))
 - [x] (Optional) Set up a different Django storage to store your files (e.g. S3)
 
+- Attachments are uploaded with a path structure of `/YEAR/MONTH/DATE/UUID.EXT`
+- By default, only JPEG/PNG/GIF files are supported of 5MB or less.
+
+Allowed file types and file size can be overridden by setting `PROSE_ATTACHMENT_ALLOWED_FILE_TYPES` and `PROSE_ATTACHMENT_ALLOWED_FILE_SIZE` in your Django project's settings file.
+
+```python
+PROSE_ATTACHMENT_ALLOWED_FILE_TYPES = [
+     "image/jpeg",
+     "image/png",
+     "image/gif",
+     "application/pdf",
+     "video/mp4",
+]
+# File size in megabytes
+PROSE_ATTACHMENT_ALLOWED_FILE_SIZE = 15
+```
+
+File types are checked using the [filetype](https://github.com/h2non/filetype.py) package. Check the filetype project for list of supported file types.
+
 ### Full example
 
 You can find a full example of a blog, built with Django Prose in the [`example`](./example/) directory.
@@ -148,6 +167,8 @@ For this reason Django Prose is using [Bleach](https://bleach.readthedocs.io/en/
 
 - **Allowed tags**: `p`, `ul`, `ol`, `li`, `strong`, `em`, `div`, `span`, `a`, `blockquote`, `pre`, `figure`, `figcaption`, `br`, `code`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `picture`, `source`, `img`
 - **Allowed attributes**: `alt`, `class`, `id`, `src`, `srcset`, `href`, `media`
+
+These defaults can be overridden by providing your own list
 
 ## Screenshots
 

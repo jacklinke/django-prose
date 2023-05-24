@@ -36,20 +36,22 @@ ALLOWED_TAGS = getattr(
 ALLOWED_ATTRIBUTES = getattr(
     settings,
     "PROSE_ALLOWED_ATTRIBUTES",
-    [
-        "alt",
-        "class",
-        "id",
-        "src",
-        "srcset",
-        "href",
-        "media",
-    ],
+    {
+        "*": [
+            "alt",
+            "class",
+            "id",
+            "src",
+            "srcset",
+            "href",
+            "media",
+        ],
+    },
 )
 
 ALLOWED_ATTACHMENT_FILE_TYPES = getattr(
     settings,
-    "PROSE_ATTACHMENT_ALLOWED_FILE_TYPES",
+    "PROSE_ALLOWED_ATTACHMENT_FILE_TYPES",
     [
         "image/jpeg",
         "image/png",
@@ -57,5 +59,5 @@ ALLOWED_ATTACHMENT_FILE_TYPES = getattr(
     ],
 )
 ALLOWED_ATTACHMENT_FILE_SIZE = getattr(
-    settings, "PROSE_ATTACHMENT_ALLOWED_FILE_SIZE", 5
+    settings, "PROSE_ALLOWED_ATTACHMENT_FILE_SIZE", 5
 )

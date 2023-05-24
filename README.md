@@ -8,7 +8,7 @@ Django Prose provides your Django applications with wonderful rich-text editing 
 
 - Python 3.8 or later
 - Django 3.2 or later
-- Bleach 4.0 or later
+- nh3 0.2.0 or later
 
 ## Getting started
 
@@ -139,10 +139,10 @@ Django Prose can also handle uploading attachments with drag and drop. To set th
 - Attachments are uploaded with a path structure of `/YEAR/MONTH/DATE/UUID.EXT`
 - By default, only JPEG/PNG/GIF files are supported of 5MB or less.
 
-Allowed file types and file size can be overridden by setting `PROSE_ATTACHMENT_ALLOWED_FILE_TYPES` and `PROSE_ATTACHMENT_ALLOWED_FILE_SIZE` in your Django project's settings file.
+Allowed file types and file size can be overridden by setting `PROSE_ALLOWED_ATTACHMENT_FILE_TYPES` and `PROSE_ALLOWED_ATTACHMENT_FILE_SIZE` in your Django project's settings file.
 
 ```python
-PROSE_ATTACHMENT_ALLOWED_FILE_TYPES = [
+PROSE_ALLOWED_ATTACHMENT_FILE_TYPES = [
      "image/jpeg",
      "image/png",
      "image/gif",
@@ -150,7 +150,7 @@ PROSE_ATTACHMENT_ALLOWED_FILE_TYPES = [
      "video/mp4",
 ]
 # File size in megabytes
-PROSE_ATTACHMENT_ALLOWED_FILE_SIZE = 15
+PROSE_ALLOWED_ATTACHMENT_FILE_SIZE = 15
 ```
 
 File types are checked using the [filetype](https://github.com/h2non/filetype.py) package. Check the filetype project for list of supported file types.
@@ -163,7 +163,7 @@ You can find a full example of a blog, built with Django Prose in the [`example`
 
 As you can see in the examples above, what Django Prose does is provide you with a user friendly editor ([Trix](https://trix-editor.org/)) for your rich text content and then store it as HTML in your database. Since you will mark this HTML as safe in order to use it in your templates, it needs to be **sanitised**, before it gets stored in the database.
 
-For this reason Django Prose is using [Bleach](https://bleach.readthedocs.io/en/latest/) to only allow the following tags and attributes:
+For this reason Django Prose is using [nh3](https://nh3.readthedocs.io/en/latest/) [(python bindings for ammonia)](https://github.com/rust-ammonia/ammonia) to only allow the following tags and attributes:
 
 - **Allowed tags**: `p`, `ul`, `ol`, `li`, `strong`, `em`, `div`, `span`, `a`, `blockquote`, `pre`, `figure`, `figcaption`, `br`, `code`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `picture`, `source`, `img`
 - **Allowed attributes**: `alt`, `class`, `id`, `src`, `srcset`, `href`, `media`

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-prose"
-version = "1.2.2"
+version = "1.2.3"
 description = "Wonderful rich text for Django"
 authors = ["Paris Kasidiaris <paris@withlogic.co>"]
 license = "MIT"
@@ -13,7 +13,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.8"
 django = ">=3.2"
-bleach = ">=4.0"
+nh3 = ">=0.2.0"
 filetype = "^1.2.0"
 
 [tool.poetry.dev-dependencies]

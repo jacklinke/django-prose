@@ -4,7 +4,7 @@ from django.conf import settings
 ALLOWED_TAGS = getattr(
     settings,
     "PROSE_ALLOWED_TAGS",
-    [
+    {
         "p",
         "ul",
         "ol",
@@ -30,14 +30,14 @@ ALLOWED_TAGS = getattr(
         "source",
         "img",
         "del",
-    ],
+    },
 )
 
 ALLOWED_ATTRIBUTES = getattr(
     settings,
     "PROSE_ALLOWED_ATTRIBUTES",
     {
-        "*": [
+        "*": {
             "alt",
             "class",
             "id",
@@ -45,7 +45,7 @@ ALLOWED_ATTRIBUTES = getattr(
             "srcset",
             "href",
             "media",
-        ],
+        },
     },
 )
 
@@ -59,5 +59,7 @@ ALLOWED_ATTACHMENT_FILE_TYPES = getattr(
     ],
 )
 ALLOWED_ATTACHMENT_FILE_SIZE = getattr(
-    settings, "PROSE_ALLOWED_ATTACHMENT_FILE_SIZE", 5
+    settings,
+    "PROSE_ALLOWED_ATTACHMENT_FILE_SIZE",
+    5,
 )
